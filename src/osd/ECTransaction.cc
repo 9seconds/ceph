@@ -28,7 +28,9 @@ struct AppendObjectsGenerator: public boost::static_visitor<void> {
   void operator()(const ECTransaction::AppendOp &op) {
     out->insert(op.oid);
   }
-  void operator()(const ECTransaction::TouchOp &op) {}
+  void operator()(const ECTransaction::TouchOp &op) {
+    out->insert(op.oid);
+  }
   void operator()(const ECTransaction::CloneOp &op) {
     out->insert(op.source);
     out->insert(op.target);
